@@ -9,8 +9,8 @@ import {
 } from '@mui/material';
 import { Entry } from '../../interfaces';
 
-import { formatDistanceToNow } from 'date-fns';
 import { UIContext } from '../../context/ui/UIContext';
+import { dateFunctions } from '../../utils';
 
 interface Props {
   entry: Entry;
@@ -54,7 +54,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
           sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}
         >
           <Typography variant='body2'>
-            {formatDistanceToNow(entry.createdAt)}
+            {dateFunctions.getFormatDistanceFromNow(entry.createdAt)}
           </Typography>
         </CardActions>
       </CardActionArea>

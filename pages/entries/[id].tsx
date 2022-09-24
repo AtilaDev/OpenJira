@@ -19,12 +19,12 @@ import {
 } from '@mui/material';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { formatDistanceToNow } from 'date-fns';
 
 import { EntriesContext } from '../../context';
 import { dbEntries } from '../../database';
 import { Layout } from '../../components/layouts';
 import { Entry, EntryStatus } from '../../interfaces';
+import { dateFunctions } from '../../utils';
 
 const validStatus: EntryStatus[] = ['pending', 'in-progress', 'finished'];
 
@@ -79,7 +79,9 @@ const EntryPage: FC<Props> = ({ entry }) => {
           <Card>
             <CardHeader
               title={`Entrada:`}
-              subheader={`Creada hace: ${formatDistanceToNow(entry.createdAt)}`}
+              subheader={`Creada ${dateFunctions.getFormatDistanceFromNow(
+                entry.createdAt
+              )}`}
             />
             <CardContent>
               <TextField
